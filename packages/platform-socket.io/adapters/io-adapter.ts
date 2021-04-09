@@ -26,9 +26,9 @@ export class IoAdapter extends AbstractWsAdapter {
 
   public createIOServer(port: number, options?: any): any {
     if (this.httpServer && port === 0) {
-      return io(this.httpServer, options);
+      return new io.Server(this.httpServer, options);
     }
-    return io(port, options);
+    return new io.Server(port, options);
   }
 
   public bindMessageHandlers(
